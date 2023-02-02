@@ -53,3 +53,12 @@ for pb in big_db.loc[:,'Production Budget']:
 
 filtered = big_db[big_db['Movie'].isin(xmas_db['title'])]
 filtered.to_csv('temp.csv',index=False)
+
+xmasnew = pd.read_csv('temp.csv')
+
+xmasnew.drop(['Domestic Profit', 'Worldwide Profit'], axis='columns', inplace=True)    
+      
+xmasnew2 = xmasnew.reset_index(drop=True)
+
+xmasnew2['Worldwide Net Revenue'] = xmasnew2.apply(lambda x: x['Worldwide Gross'] - x['Production Budget'], axis=1)
+xmasnew3 = xmasnew2.sort_values(by='Worldwide Net Revenue', ascending = False).reset_index(drop=True)
