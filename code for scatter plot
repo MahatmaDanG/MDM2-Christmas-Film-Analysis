@@ -1,0 +1,44 @@
+#creating a scatter plot rating vs gross
+#parameters for diff colors
+low = (0, 1, 0)
+medium = (0, 0, 1)
+mediumhigh = (0, 1, 1)
+high = (1, 0, 0)
+
+grossranges = []
+
+#sorting the colors by range of gross
+for value in range(len(christm3.title)):
+    if value < 15:
+        grossranges.append(high)
+        
+    elif value >= 15 and value < 34:
+        grossranges.append(mediumhigh)
+    
+    elif value >=34 and value < 52:
+        grossranges.append(medium)
+        
+    elif value >= 52:
+        grossranges.append(low) 
+
+plt.style.use("seaborn")
+
+plt.scatter(x=christm4.imdb_rating, 
+            y=christm4.gross, 
+            c=grossranges,
+            cmap='jet',
+            alpha=0.8,
+            
+)
+
+plt.title('IMDB-rating vs Gross Income')
+plt.legend(['>$100M', '$50M-$100M', '$10M-$50M', '<$10M'])
+plt.xlabel('IMDB-rating')
+plt.ylabel('Gross Income (Millions of $)')
+plt.text(
+    2.7,
+    50,
+    'Color of marker = Range of Gross'
+)
+
+plt.show()
