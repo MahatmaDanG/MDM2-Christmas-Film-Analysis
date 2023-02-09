@@ -14,7 +14,7 @@ from sklearn.linear_model import LinearRegression
 
 xmas_db = pd.read_csv('christmas_movies.csv')  #read xmas films table
 big_db = pd.read_csv('top 6359 movie budgets - Sheet1.csv') #read general films table
-TM_db = pd.read_csv('RTdb/rotten_tomatoes_movies.csv')
+TM_db = pd.read_csv('RTdb/rotten_tomatoes_movies.csv') #probably change the directory based on local path
 
 # remove commas and dollar signs in the 3 numerical columns and convert them to integers:
 
